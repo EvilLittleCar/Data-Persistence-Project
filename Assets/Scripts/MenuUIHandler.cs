@@ -16,21 +16,29 @@ public class MenuUIHandler : MonoBehaviour
 
     private void Start()
     {
-        bestScoreDisplay.text = "Best Score: " + DataManager.Instance.bestName + " : " + DataManager.Instance.bestScore;
+        Debug.Log("Starting scene");
+        
+        bestScoreDisplay.text = "Best Score\n " + DataManager.Instance.myHiNames[0] + " : " + DataManager.Instance.myHiScores[0] + "    " + DataManager.Instance.myHiDates[0];
         DataManager.Instance.myName = "   ";
     }
 
-    public void EnterName(TextMeshProUGUI myString)
-    {
-        Debug.Log("Changing name to" + myString.text);
-        DataManager.Instance.myName = myString.text;
-    }
+   
 
     public void StartNewGame()
     {
         if (DataManager.Instance.myName == null)
             DataManager.Instance.myName = "   ";
         SceneManager.LoadScene(1);
+    }
+
+    public void ShowHighScores()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void BackButton()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void ExitGame()
